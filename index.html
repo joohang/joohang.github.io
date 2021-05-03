@@ -1,12 +1,423 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>Hello</title>
+        <meta charset="utf-8"/>
+        <title>Price telling</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <header>
-        <h1>WElcome</h1>
-    </header>
-    <body>
-        Welcome to my page
-    </body>
+<body> 
+    <style>
+    #div1
+    {
+       margin-top: 2em;
+    }
+    #copy
+    {
+        margin-left: 10em;
+    }
+    html
+    {
+      border:2px solid blue;
+      background-color:rgb(143, 200, 202);
+    }
+    </style>
+
+  <div id="div1"><!--排位代練+15-->
+  <label for="amt">Price(RM+15): </label>
+  <input type="text" name="amt15" id="amt15">
+  <br/><br/>
+  <button onclick="check15()">Check</button>
+  <p id="output15"></p>
+  <button id="copy"onclick="copyClipboard15()">Copy</button>
+
+  <div id="div1"><!--排位代練+8-->
+    <label for="amt">Price(RM+8): </label>
+    <input type="text" name="amt14" id="amt14">
+    <br/><br/>
+    <button onclick="check14()">Check</button>
+    <p id="output14"></p>
+    <button id="copy"onclick="copyClipboard4()">Copy</button>
+
+
+    <div id="div1"><!--排位代練原價-->
+    <label for="amt">Price(RM): </label>
+    <input type="text" name="amt" id="amt">
+    <br/><br/>
+    <button onclick="check()">Check</button>
+    <p id="output"></p>
+    <button id="copy"onclick="copyClipboard()">Copy</button>
+    
+</div>
+
+<div id="div1">
+    <label for="amt">Discount price: </label>
+    <input type="text" name="dis" id="dis">
+    <br/><br/>
+    <button onclick="check2()">Check</button>
+    <p id="disOut"></p>
+    <button id="copy"onclick="copyClipboard2()">Copy</button>
+</div>
+
+<div id="div1">
+  <p style="padding-left:1em;font-size: 1.1em;color: white;text-decoration-line: underline;" >荣耀战力代练</p>
+  <label for="amt">Price(RM): </label>
+  <input type="text" name="amt2" id="amt2">
+  <br/><br/>
+  <button onclick="check3()">Check</button>
+  <p id="output3"></p>
+  <button id="copy"onclick="copyClipboard3()">Copy</button>
+
+  <div id="div1">
+    <p style="padding-left:1em;font-size: 1.1em;color: white;text-decoration-line: underline;" >荣耀战力代练 + RM15</p>
+    <label for="amt">Price(RM+15): </label>
+    <input type="text" name="amt12" id="amt12">
+    <br/><br/>
+    <button onclick="check12()">Check</button>
+    <p id="output12"></p>
+    <button id="copy"onclick="copyClipboard12()">Copy</button>
+
+    <div id="div1"><!--巅峰赛-->
+      <p style="color: white;font-size: 1.2em;">巅峰赛代练</p>
+      <label for="amt">Price(+RM15): </label>
+      <input type="text" name="amt20" id="amt20">
+      <br/><br/>
+      <button onclick="check20()">Check</button>
+      <p id="output20"></p>
+      <button id="copy"onclick="copyClipboard20()">Copy</button>
+
+
+
+<script>
+  function check20()//巅峰赛
+    {
+        var specific = parseInt(document.getElementById('amt20').value);
+        var amount = parseInt(document.getElementById('amt20').value);
+        var amountAdd15 = amount ;
+        var sixpercent = amountAdd15 * 0.074  ;
+
+        var add15 = amountAdd15+ sixpercent  ; //declare total amount add 15
+        var devide2 = add15/2; //total amount /2
+        var newTotal = devide2+15;//普通代練+15
+
+        specific = devide2 * 0.33 ;
+        var total = specific + devide2+15;
+        var speed =  devide2 * 0.27;
+        var totalSpeed = devide2 + speed+15;
+        var speedAddSpecific = totalSpeed + specific;
+        
+        document.getElementById('output20').innerHTML = "- - - -王者巅峰代练 - - - -<br/>"  +
+         "普通代练:" + newTotal.toFixed(2)  + " 块钱<br/>" + "指定英雄:+" + specific.toFixed(2)  + "块钱<br/>" + "加急完成:+" + speed.toFixed(2)  + "块钱<br/>" +
+         "加急估计 0-1 小时左右急速开打<br/>" + "- - - - - - - - - - - - - - - -<br/>" + 
+         "普通代练实际付款:" + " [" + newTotal.toFixed(0) + ".00" + "]"
+        + "块钱<br/>" + "指定英雄实际付款:" + " ["+ total.toFixed(0) +".00" +"]" + "块钱<br/>" + "加急订单实际付款: " + "[" + totalSpeed.toFixed(0)+".00"  + "]"+
+        "块钱<br/>" +  "指定加急实际付款: " + "[" + speedAddSpecific.toFixed(0)+".00"   + "]" + "块钱<br/>" + "- - - - - - - - - - - - - - - -<br/>" +"**第三方交易方式可豁免 6%服务税！" ;
+}
+  function check3()//荣耀战力代练
+    {
+      var amount = parseInt(document.getElementById('amt2').value);
+        var sixpercent = amount * 0.074;
+        var aftersix = amount + sixpercent;  //total original price after 6%
+        var speed = aftersix * 0.33;//declare  need to add how much
+        var totalSpeed = aftersix + speed;// total price after add 3%
+        var devide2 = aftersix/2;
+        var after6D2 = totalSpeed/2;  
+
+
+        document.getElementById('output3').innerHTML = "- - - -王者战力代练 - - -<br/>"  +
+         "战力代练:" + devide2.toFixed(2) + " 块钱<br/>" + "加急完成:+" + (speed/2).toFixed(2) + "块钱<br/>" +
+         "加急估计 0-1 小时左右急速开打<br/>" + "- - - - - - - - - - - - - - - -<br/>" + "普通代练实际付款:" + " [" + devide2.toFixed(0)+ ".00" + "]"
+        + "块钱<br/>" + "加急订单实际付款: " + "[" + after6D2.toFixed(0)+".00" + "]" +
+        "块钱<br/>" + "- - - - - - - - - - - - - - - -<br/>"+"**第三方交易方式可豁免 6%服务税！" ;
+}
+function check12()//荣耀战力代练+RM15
+    {
+        var amount = parseInt(document.getElementById('amt12').value);
+        var add15 = amount ;
+
+        var sixpercent = add15 * 0.074;
+        var aftersix = add15 + sixpercent;
+        
+        var speed = aftersix * 0.33;
+        var totalSpeed = aftersix + speed;
+        
+        var devide2 = aftersix/2+15;
+        var after6D2 = totalSpeed/2+15;  
+
+        document.getElementById('output12').innerHTML = "- - - -王者战力代练 - - -<br/>"  +
+         "战力代练:" + devide2.toFixed(2) + " 块钱<br/>" + "加急完成:+" + (speed/2).toFixed(2) + "块钱<br/>" +
+         "加急估计 0-1 小时左右急速开打<br/>" + "- - - - - - - - - - - - - - - -<br/>" + "普通代练实际付款:" + " [" + devide2.toFixed(0)+ ".00" + "]"
+        + "块钱<br/>" + "加急订单实际付款: " + "[" + after6D2.toFixed(0)+ ".00" + "]" +
+        "块钱<br/>" + "- - - - - - - - - - - - - - - -<br/>"+"**第三方交易方式可豁免 6%服务税！" ;
+}
+
+
+function check15()//排位代練+15
+    {
+        var specific = parseInt(document.getElementById('amt15').value);
+        var amount = parseInt(document.getElementById('amt15').value);
+
+        var amountAdd15 = amount ;
+
+        var sixpercent = amountAdd15 * 0.074  ;  //add how many
+        var add15 = amountAdd15+ sixpercent ; //declare total amount add 15 / TOTAL price***原價
+
+        specific = add15 * 0.33 ;//add how many
+        var total = specific + add15;//TOTAL Specific
+        var speed = add15 * 0.27;//add how many
+        var totalSpeed = add15 + speed;//TOTAL speed 
+        var speedAddSpecific = totalSpeed + specific;//TOTAL speed + specific
+
+        var dev1 = (add15/2)+15;
+        var dev2 = (total/2)+15;
+        var dev3 = (totalSpeed/2)+15;
+        var dev4 = (speedAddSpecific/2)+15;
+    
+        document.getElementById('output15').innerHTML = "- - - - -王者代练 - - - -<br/>"  +
+         "排位代练:" + dev1.toFixed(2)  + " 块钱<br/>" + "指定英雄:+" + (specific/2).toFixed(2) + "块钱<br/>" + "加急完成:+" + (speed/2).toFixed(2)  + "块钱<br/>" +
+         "加急估计 0-1 小时左右急速开打<br/>" + "- - - - - - - - - - - - - - - -<br/>" + "普通代练实际付款:" + " [" + dev1.toFixed(0)  + ".00"+ "]"
+        + "块钱<br/>" + "指定英雄实际付款:" + " ["+ dev2.toFixed(0)  +".00"+"]" + "块钱<br/>" + "加急订单实际付款: " + "[" + dev3.toFixed(0)  + ".00"+ "]"+
+        "块钱<br/>" +  "指定加急实际付款: " + "[" + dev4.toFixed(0)  +".00" + "]" + "块钱<br/>" + "- - - - - - - - - - - - - - - -<br/>" +"**第三方交易方式可豁免 6%服务税！" ;
+}
+function check14()//排位代練+8
+    {
+        var specific = parseInt(document.getElementById('amt14').value);
+        var amount = parseInt(document.getElementById('amt14').value);
+        var amountAdd8 = amount ;
+
+        var sixpercent = amountAdd8 * 0.074  ;
+        var add15 = amountAdd8 +sixpercent; //declare total amount add 15
+
+        specific = add15 * 0.33;
+        var total = specific + add15;
+        var speed = add15 * 0.27;
+        var totalSpeed = add15 + speed;
+        var speedAddSpecific = totalSpeed + specific;
+
+        var dev1 = (add15/2)+8;
+        var dev2 = total/2+8;
+        var dev3 = totalSpeed/2+8;
+        var dev4 = speedAddSpecific/2+8;
+
+        
+        document.getElementById('output14').innerHTML = "- - - - -王者代练 - - - -<br/>"  +
+         "排位代练:" + dev1.toFixed(2) + " 块钱<br/>" + "指定英雄:+" + (specific/2).toFixed(2) + "块钱<br/>" + "加急完成:+" + (speed/2).toFixed(2) + "块钱<br/>" +
+         "加急估计 0-1 小时左右急速开打<br/>" + "- - - - - - - - - - - - - - - -<br/>" + "普通代练实际付款:" + " [" + dev1.toFixed(0) +".00"+ "]"
+        + "块钱<br/>" + "指定英雄实际付款:" + " ["+ dev2.toFixed(0) +".00"+"]"  + "块钱<br/>" + "加急订单实际付款: " + "[" + dev3.toFixed(0) +".00"+ "]" +
+        "块钱<br/>" + "指定加急实际付款: " + "[" + dev4.toFixed(0) +".00" + "]"  + "块钱<br/>" + "- - - - - - - - - - - - - - - -<br/>"+"**第三方交易方式可豁免 6%服务税！" ;
+}
+    function check()//排位代練原價
+    {
+        var specific = parseInt(document.getElementById('amt').value);
+        var amount = parseInt(document.getElementById('amt').value);
+
+
+        var sixpercent = amount * 0.074  ;
+        var totalAmount = amount + sixpercent;
+
+        specific = totalAmount * 0.33;
+        var total = specific + totalAmount;
+        var speed = totalAmount * 0.27;
+        var totalSpeed = totalAmount + speed;
+        var speedAddSpecific = totalSpeed + specific;
+
+        var dev1 = totalAmount/2;
+        var dev2 = total/2;
+        var dev3 = totalSpeed/2;
+        var dev4 = speedAddSpecific/2;
+        
+        document.getElementById('output').innerHTML = "- - - - -王者代练 - - - -<br/>"  +
+         "排位代练:" + dev1.toFixed(2) + " 块钱<br/>" + "指定英雄:+" + (specific/2).toFixed(2) + "块钱<br/>" + "加急完成:+" + (speed/2).toFixed(2) + "块钱<br/>" +
+         "加急估计 0-1 小时左右急速开打<br/>" + "- - - - - - - - - - - - - - - -<br/>" + "普通代练实际付款:" + " [" + dev1.toFixed(0) +".00"+ "]"
+        + "块钱<br/>" + "指定英雄实际付款:" + " ["+ dev2.toFixed(0) +".00"+"]"  + "块钱<br/>" + "加急订单实际付款: " + "[" + dev3.toFixed(0) +".00"+ "]" +
+        "块钱<br/>" + "指定加急实际付款: " + "[" + dev4.toFixed(0) +".00" + "]"  + "块钱<br/>" + "- - - - - - - - - - - - - - - -<br/>" +"**第三方交易方式可豁免 6%服务税！";
+}
+function check2()
+    {
+        var amount = parseInt(document.getElementById('dis').value);
+        document.getElementById('disOut').innerHTML = "---限时优惠---<br/>"+"十五分钟内下单给您特别优惠价,只需" + "『 " + amount + " 』" + "块钱！<br/>" + 
+        "来一单么？亲亲，下单后火速帮您安排！";
+    }
+/**function check2()//多余code
+    {
+        var specific = parseInt(document.getElementById('amt').value);
+        var amount = parseInt(document.getElementById('amt').value);
+        specific = amount * 0.300;
+        var total = specific + amount;
+        var speed = amount * 0.25;
+        var totalSpeed = amount + speed;
+        var speedAddSpecific = totalSpeed + specific;
+        
+        document.getElementById('output').innerHTML = "- - - - -王者代练 - - - -<br/>"  +
+         "排位代练:" + amount.toFixed(2) + " 块钱<br/>" + "指定英雄:+" + specific.toFixed(2) + "块钱<br/>" + "加急完成:+" + speed.toFixed(2) + "块钱<br/>" +
+         "加急估计 0-1 小时左右急速开打<br/>" + "- - - - - - - - - - - - - - - -<br/>" + "普通代练实际付款:" + " [" + amount.toFixed(2) + "]"
+        + "块钱<br/>" + "指定英雄实际付款:" + " ["+ total.toFixed(2) +"]"  + "块钱<br/>" + "加急订单实际付款: " + "[" + totalSpeed.toFixed(2) + "]" +
+        "块钱<br/>" + "指定加急实际付款: " + "[" + speedAddSpecific.toFixed(2) + "]"  + "块钱<br/>" + "- - - - - - - - - - - - - - - -<br/>"+"**第三方交易方式可豁免 6%服务税！" ;
+}**/
+
+//********* clipboard code below **************
+function copyClipboard() {
+  var elm = document.getElementById("output");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+function copyClipboard15() {
+  var elm = document.getElementById("output15");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+function copyClipboard20() {
+  var elm = document.getElementById("output20");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+
+function copyClipboard2() {
+  var elm = document.getElementById("disOut");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+function copyClipboard3() {
+  var elm = document.getElementById("output3");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+function copyClipboard12() {
+  var elm = document.getElementById("output12");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+function copyClipboard4() {
+  var elm = document.getElementById("output14");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+
+</script>
+</body>
 </html>
