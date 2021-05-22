@@ -233,9 +233,34 @@ function check14()//排位代練+8
 }
 function check2()
     {
+      var time = new Date();
+      var  hour,  minute, now;
+      now = new Date();
+      hour = now.getHours();
+      minute = now.getMinutes();
+    
+    var fifM;
+    fifM = minute+=15;
+    
+   if(hour%12==0)
+   {
+    hour =12;
+   }
+
+    if(fifM>=60)
+    {
+      minute-=60;
+      hour+=1;
+     
+    }
+    if(minute<10)
+    {
+      minute = "0" + minute;
+    }
+    
         var amount = parseInt(document.getElementById('dis').value);
-        document.getElementById('disOut').innerHTML = "---限时优惠---<br/>"+"十五分钟内下单给您特别优惠价,只需" + "『 " + amount + " 』" + "块钱！<br/>" + 
-        "来一单么？亲亲，下单后火速帮您安排！";
+        document.getElementById('disOut').innerHTML =  "---限时优惠---<br/>"+ "**" +hour + "點 " +  minute + "分" + "**" +"之前下單給您特別優惠, 只需" + "『 " + amount + " 』" + "塊錢！！<br/>" + 
+        "來一旦麼？亲，下單後火速幫您安排！";
     }
 /**function check2()//多余code
     {
