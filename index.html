@@ -17,9 +17,10 @@
     }
     html
     {
-      border:2px solid blue;
-      background-color:rgb(143, 200, 202);
-    }
+      background: rgb(251,171,126);
+      background: linear-gradient(45deg, rgba(251,171,126,1) 30%, rgba(247,206,104,1) 60%);
+
+   }
     </style>
 
   <div id="div1"><!--排位代練+15-->
@@ -236,7 +237,7 @@ function check2()
       var time = new Date();
       var  hour,  minute, now;
       now = new Date();
-      hour = now.getHours();
+      hour = now.getHours%12();
       minute = now.getMinutes();
     
     var fifM;
