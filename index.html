@@ -53,10 +53,21 @@
 <div id="div1">
     <label for="amt">Discount price: </label>
     <input type="text" name="dis" id="dis">
-    <br/><br/>
+    <br/>
+    <br/>
     <button onclick="check2()">Check</button>
     <p id="disOut"></p>
     <button id="copy"onclick="copyClipboard2()">Copy</button>
+</div>
+
+<div id="div1">
+  <label for="amt">加急 discount price: </label>
+  <input type="text" name="dis_2" id="dis_2">
+  <br/>
+  <br/>
+  <button onclick="check2_2()">Check</button>
+  <p id="disOut_2"></p>
+  <button id="copy"onclick="copyClipboard2_2()">Copy</button>
 </div>
 
 <div id="div1">
@@ -260,9 +271,47 @@ function check2()
     }
     
         var amount = parseInt(document.getElementById('dis').value);
-        document.getElementById('disOut').innerHTML =  "---限时优惠---<br/>"+ "**" +hour + "點 " +  minute + "分" + "**" +"之前下單給您特別優惠, 只需" + "『 " + amount + " 』" + "塊錢！！<br/>" + 
+
+        document.getElementById('disOut').innerHTML =  "---普通代練限时优惠---<br/>"+ "**" +hour + "點 " + 
+        minute + "分" + "**" +"之前下單給您特別優惠, 只需" + "『 " + amount + " 』" + "塊錢！！<br/>" + 
         "來一單麼？亲，下單後火速幫您安排！";
     }
+
+
+    function check2_2()
+    {
+      var time = new Date();
+      var  hour,minute,now;
+      now = new Date();
+      hour = now.getHours()%12;
+      minute = now.getMinutes();
+    
+    var fifM;
+    fifM = minute+=15;
+    
+   if(hour%12==0)
+   {
+    hour =12;
+   }
+
+    if(fifM>=60)
+    {
+      minute-=60;
+      hour+=1;
+     
+    }
+    if(minute<10)
+    {
+      minute = "0" + minute;
+    }
+    
+        var amount = parseInt(document.getElementById('dis_2').value);
+        document.getElementById('disOut_2').innerHTML =  "---<u>加急代練</u>限时优惠---<br/>" + "**" +hour + 
+        "點 " +  minute + "分" + "**" +"之前下單給您特別優惠, 只需" + "『 " + amount + " 』" + "塊錢！！<br/>" + 
+        "來一單麼？亲，下單後火速幫您安排！";
+    }
+
+    
 /**function check2()//多余code
     {
         var specific = parseInt(document.getElementById('amt').value);
@@ -353,6 +402,29 @@ function copyClipboard20() {
 
 function copyClipboard2() {
   var elm = document.getElementById("disOut");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Message copied!");
+  }
+}
+function copyClipboard2_2() {
+  var elm = document.getElementById("disOut_2");
   // for Internet Explorer
 
   if(document.body.createTextRange) {
